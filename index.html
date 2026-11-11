@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@veinti5co — Cuadros Decorativos Exclusivos</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJZF80QM0D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BJZF80QM0D');
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#F9F8F6',
+                        brandCard: '#FFFFFF',
+                        brandText: '#111111',
+                        brandMuted: '#666666',
+                        brandBorder: '#E5E5E5',
+                        brandAccent: '#000000'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9F8F6; color: #111111; }
+        .active-btn { background-color: #000000 !important; color: #ffffff !important; border-color: #000000 !important; }
+        .glass-modal { backdrop-filter: blur(8px); background-color: rgba(0, 0, 0, 0.6); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-black selection:text-white">
+
+    <!-- NAVBAR -->
+    <header class="w-full bg-brandBg/90 backdrop-blur-md sticky top-0 z-40 border-b border-brandBorder px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-bold tracking-widest text-brandText">@VEINTI5CO</div>
+        <nav class="hidden md:flex space-x-8 text-xs font-medium uppercase tracking-wider text-brandMuted">
+            <a href="#catalogo" class="hover:text-brandText transition">Álbumes</a>
+            <a href="#catalogo" class="hover:text-brandText transition">Música</a>
+            <a href="#catalogo" class="hover:text-brandText transition">Cine</a>
+            <a href="#autoridad" class="hover:text-brandText transition">Experiencia</a>
+        </nav>
+        <div class="text-xs font-medium border border-brandText px-3 py-1 rounded-full uppercase tracking-wider">
+            Tienda Oficial
+        </div>
+    </header>
+
+    <!-- BANNER PRINCIPAL -->
+    <section class="relative w-full h-[60vh] min-h-[400px] bg-cover bg-center flex items-center justify-center overflow-hidden bg-gray-200" 
+             style="background-image: url('banner.jpg');">
+        <img src="banner.jpg" class="hidden" onerror="this.parentElement.style.backgroundImage='url(\'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=1600&auto=format&fit=crop\')'">
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-white text-3xl md:text-5xl font-light tracking-widest uppercase drop-shadow-md">Arte & Diseño Minimalista</h1>
+            <p class="text-white/90 text-xs md:text-sm uppercase tracking-widest mt-2">Impresiones de alta gama para espacios con identidad</p>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO PRINCIPAL -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-6 py-16 w-full">
+        <div class="flex justify-between items-end mb-10 border-b border-brandBorder pb-4">
+            <div>
+                <h2 class="text-2xl font-light tracking-tight text-brandText">Catálogo Exclusivo</h2>
+                <p class="text-xs text-brandMuted uppercase tracking-wider mt-1">Selecciona un cuadro para configurar medida y acabado</p>
+            </div>
+        </div>
+
+        <!-- GRILLA DE PRODUCTOS (TODA LA TARJETA ABRE EL MODAL CON EFECTO) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            
+            <!-- PRODUCTO 1 -->
+            <div onclick="openModal('Cuadro Álbum Musical')" class="bg-brandCard border border-brandBorder rounded-sm p-4 flex flex-col justify-between hover:shadow-xl cursor-pointer transition-all duration-300 group">
+                <div>
+                    <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                        <img src="producto1.jpg" alt="Cuadro de Álbum" class="object-cover w-full h-full group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop'">
+                        <span class="absolute top-2 left-2 bg-brandText text-white text-[10px] font-semibold uppercase px-2 py-0.5">Popular</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-brandText uppercase tracking-wide">Cuadro Álbum Musical</h3>
+                    <p class="text-xs text-brandMuted mt-1">Carátula personalizada con código interactivo.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-brandBorder flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-brandMuted">Desde</span>
+                        <p class="text-sm font-semibold text-brandText">$65.000 COP</p>
+                    </div>
+                    <span class="text-xs uppercase font-medium border border-brandText px-3 py-1.5 bg-brandText text-white group-hover:bg-gray-800 transition">
+                        Personalizar
+                    </span>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 2 -->
+            <div onclick="openModal('Poster Cine & Series')" class="bg-brandCard border border-brandBorder rounded-sm p-4 flex flex-col justify-between hover:shadow-xl cursor-pointer transition-all duration-300 group">
+                <div>
+                    <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                        <img src="producto2.jpg" alt="Cuadro Cine" class="object-cover w-full h-full group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop'">
+                    </div>
+                    <h3 class="text-sm font-medium text-brandText uppercase tracking-wide">Poster Cine & Series</h3>
+                    <p class="text-xs text-brandMuted mt-1">Ediciones minimalistas de películas icónicas.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-brandBorder flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-brandMuted">Desde</span>
+                        <p class="text-sm font-semibold text-brandText">$65.000 COP</p>
+                    </div>
+                    <span class="text-xs uppercase font-medium border border-brandText px-3 py-1.5 bg-brandText text-white group-hover:bg-gray-800 transition">
+                        Personalizar
+                    </span>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 3 -->
+            <div onclick="openModal('Cuadro Personalizado')" class="bg-brandCard border border-brandBorder rounded-sm p-4 flex flex-col justify-between hover:shadow-xl cursor-pointer transition-all duration-300 group">
+                <div>
+                    <div class="relative overflow-hidden aspect-[3/4] mb-4 bg-gray-100">
+                        <img src="producto3.jpg" alt="Cuadro Personalizado" class="object-cover w-full h-full group-hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=800&auto=format&fit=crop'">
+                        <span class="absolute top-2 right-2 bg-brandText text-white text-[10px] font-semibold uppercase px-2 py-0.5">A medida</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-brandText uppercase tracking-wide">Tu Foto u Obra a Cuadro</h3>
+                    <p class="text-xs text-brandMuted mt-1">Impresión directa en alta definición con marco de madera.</p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-brandBorder flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-brandMuted">Desde</span>
+                        <p class="text-sm font-semibold text-brandText">$65.000 COP</p>
+                    </div>
+                    <span class="text-xs uppercase font-medium border border-brandText px-3 py-1.5 bg-brandText text-white group-hover:bg-gray-800 transition">
+                        Personalizar
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SECCIÓN DE AUTORIDAD (DEBAJO DE LOS PRODUCTOS) -->
+    <section id="autoridad" class="bg-white border-t border-b border-brandBorder py-16 px-6">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 border border-brandBorder/60 rounded-sm bg-brandBg/50">
+                <p class="text-3xl font-light text-brandText mb-1">7 Años</p>
+                <p class="text-xs uppercase tracking-wider text-brandMuted font-medium">De Experiencia en Diseño & Arte</p>
+            </div>
+            <div class="p-6 border border-brandBorder/60 rounded-sm bg-brandBg/50">
+                <p class="text-3xl font-light text-brandText mb-1">+1.500</p>
+                <p class="text-xs uppercase tracking-wider text-brandMuted font-medium">Clientes Satisfechos en Colombia</p>
+            </div>
+            <div class="p-6 border border-brandBorder/60 rounded-sm bg-brandBg/50">
+                <p class="text-3xl font-light text-brandText mb-1">100%</p>
+                <p class="text-xs uppercase tracking-wider text-brandMuted font-medium">Calidad Garantizada & Nequi Segurizado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE CONFIGURACIÓN CON FONDO DESENFOCADO (GLASS) -->
+    <div id="productModal" class="fixed inset-0 glass-modal z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white max-w-lg w-full rounded-sm p-6 relative shadow-2xl animate-fade-in">
+            <button onclick="closeModal(event)" class="absolute top-4 right-4 text-brandMuted hover:text-brandText text-xl font-bold">&times;</button>
+            
+            <h3 id="modalTitle" class="text-lg font-medium text-brandText uppercase tracking-wide border-b border-brandBorder pb-2">Configurar Cuadro</h3>
+            
+            <!-- SELECCIÓN DE MEDIDA -->
+            <div class="mt-4">
+                <label class="text-xs font-semibold uppercase tracking-wider text-brandMuted block mb-2">1. Selecciona la Medida:</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button type="button" onclick="selectSize('21x30', this)" class="size-btn border border-brandBorder py-2.5 text-xs font-medium hover:border-brandText transition active-btn">21 x 30 cm</button>
+                    <button type="button" onclick="selectSize('30x40', this)" class="size-btn border border-brandBorder py-2.5 text-xs font-medium hover:border-brandText transition">30 x 40 cm</button>
+                    <button type="button" onclick="selectSize('50x70', this)" class="size-btn border border-brandBorder py-2.5 text-xs font-medium hover:border-brandText transition">50 x 70 cm</button>
+                </div>
+            </div>
+
+            <!-- SELECCIÓN DE MARCO -->
+            <div class="mt-4">
+                <label class="text-xs font-semibold uppercase tracking-wider text-brandMuted block mb-2">2. Selecciona el Tipo de Marco:</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button type="button" onclick="selectFrame('delgado', this)" class="frame-btn border border-brandBorder py-2.5 text-xs font-medium hover:border-brandText transition active-btn">Marco Delgado</button>
+                    <button type="button" onclick="selectFrame('grueso', this)" class="frame-btn border border-brandBorder py-2.5 text-xs font-medium hover:border-brandText transition">Marco Grueso</button>
+                </div>
+            </div>
+
+            <!-- PRECIO TOTAL Y ACCIÓN -->
+            <div class="mt-6 pt-4 border-t border-brandBorder flex justify-between items-center">
+                <div>
+                    <span class="text-xs text-brandMuted uppercase tracking-wider">Precio Total:</span>
+                    <p id="modalPrice" class="text-xl font-bold text-brandText">$65.000 COP</p>
+                </div>
+                <button onclick="sendToWhatsApp()" class="bg-brandText text-white text-xs uppercase tracking-wider px-6 py-3 hover:bg-gray-800 transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-sm"></i> Pedir por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PESTAÑA FLOTANTE DE PROMOCIONES -->
+    <div class="fixed bottom-6 left-6 z-40">
+        <button onclick="togglePromoModal()" class="bg-brandText text-white text-xs px-4 py-2.5 rounded-full shadow-lg hover:bg-gray-800 transition flex items-center gap-2 border border-brandBorder">
+            <i class="fas fa-tag text-xs"></i>
+            <span class="font-medium tracking-wide">Promociones & Descuentos</span>
+        </button>
+
+        <div id="promoBox" class="hidden absolute bottom-12 left-0 w-72 bg-white border border-brandBorder shadow-xl rounded-sm p-4 mb-2">
+            <div class="flex justify-between items-center border-b border-brandBorder pb-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider text-brandText">Descuentos Activos</span>
+                <button onclick="togglePromoModal()" class="text-brandMuted hover:text-brandText text-sm">&times;</button>
+            </div>
+            <p class="text-xs text-brandMuted mb-3">
+                ¡Síguenos en redes y obtén un <strong>10% OFF</strong> en tu primer pedido pagando con Nequi!
+            </p>
+            <div class="space-y-2">
+                <a href="https://instagram.com" target="_blank" class="flex items-center justify-between text-xs border border-brandBorder p-2 rounded hover:bg-brandBg transition">
+                    <span class="flex items-center gap-2"><i class="fab fa-instagram text-pink-600 text-sm"></i> @veinti5co</span>
+                    <i class="fas fa-external-link-alt text-brandMuted"></i>
+                </a>
+                <a href="https://tiktok.com" target="_blank" class="flex items-center justify-between text-xs border border-brandBorder p-2 rounded hover:bg-brandBg transition">
+                    <span class="flex items-center gap-2"><i class="fab fa-tiktok text-black text-sm"></i> TikTok Oficial</span>
+                    <i class="fas fa-external-link-alt text-brandMuted"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MINI REPRODUCTOR FLOTANTE DE SPOTIFY -->
+    <div class="fixed bottom-6 right-6 z-40 bg-white border border-brandBorder shadow-2xl rounded-full px-4 py-2 flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=200&auto=format&fit=crop" alt="Album" class="w-full h-full object-cover">
+        </div>
+        <div class="hidden sm:block text-left pr-2">
+            <p class="text-[11px] font-semibold text-brandText uppercase tracking-wider">Playlist @veinti5co</p>
+            <p class="text-[9px] text-brandMuted">Música oficial de fondo</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleAudio()" id="playBtn" class="w-8 h-8 rounded-full bg-brandText text-white flex items-center justify-center hover:scale-105 transition">
+                <i class="fas fa-play text-xs ml-0.5"></i>
+            </button>
+        </div>
+        <!-- Reproductor embebido oculto con la pista de Spotify que enviaste -->
+        <iframe class="hidden" src="https://open.spotify.com/embed/track/4R2wF2C8MnMXVMNUYSHAjK?utm_source=generator" width="0" height="0" allow="autoplay" id="spotifyAudio"></iframe>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandBg border-t border-brandBorder py-8 px-6 text-center text-xs text-brandMuted">
+        <p>© 2026 @veinti5co — Todos los derechos reservados. Pagos exclusivamente vía Nequi.</p>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        const CONFIG = {
+            whatsappNumber: '573053345255'
+        };
+
+        const priceMatrix = {
+            '21x30': { 'delgado': 65000, 'grueso': 85000 },
+            '30x40': { 'delgado': 95000, 'grueso': 125000 },
+            '50x70': { 'delgado': 160000, 'grueso': 195000 }
+        };
+
+        let selectedProduct = '';
+        let selectedSize = '21x30';
+        let selectedFrame = 'delgado';
+
+        function openModal(productName) {
+            selectedProduct = productName;
+            document.getElementById('modalTitle').innerText = productName;
+            document.getElementById('productModal').classList.remove('hidden');
+            updatePriceDisplay();
+        }
+
+        function closeModal(event) {
+            if (event) event.stopPropagation();
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function selectSize(size, btnElement) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active-btn'));
+            btnElement.classList.add('active-btn');
+            updatePriceDisplay();
+        }
+
+        function selectFrame(frame, btnElement) {
+            selectedFrame = frame;
+            document.querySelectorAll('.frame-btn').forEach(btn => btn.classList.remove('active-btn'));
+            btnElement.classList.add('active-btn');
+            updatePriceDisplay();
+        }
+
+        function updatePriceDisplay() {
+            const currentPrice = priceMatrix[selectedSize][selectedFrame];
+            document.getElementById('modalPrice').innerText = `$${currentPrice.toLocaleString()} COP`;
+        }
+
+        function sendToWhatsApp() {
+            const finalPrice = priceMatrix[selectedSize][selectedFrame].toLocaleString();
+            const frameLabel = selectedFrame === 'delgado' ? 'Marco Delgado' : 'Marco Grueso';
+            
+            const message = `Hola 25, me interesa el cuadro de: ${selectedProduct}.\n- Medida: ${selectedSize} cm\n- Acabado: ${frameLabel}\n- Valor: $${finalPrice} COP`;
+            
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function togglePromoModal() {
+            document.getElementById('promoBox').classList.toggle('hidden');
+        }
+
+        let isPlaying = false;
+        function toggleAudio() {
+            const btn = document.getElementById('playBtn');
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                btn.innerHTML = '<i class="fas fa-pause text-xs"></i>';
+                // Al hacer clic, el usuario habilita la reproducción por política del navegador
+            } else {
+                btn.innerHTML = '<i class="fas fa-play text-xs ml-0.5"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
