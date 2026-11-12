@@ -1,0 +1,57 @@
+backend:
+  name: turbo-github
+  turbo_site_id: b698854b-32a2-456a-a330-961140e910d8
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "configuracion_general"
+    label: "⚙️ Configuración y Identidad Web"
+    files:
+      - file: "index.html"
+        label: "Identidad, Banners y Carga"
+        name: "general"
+        fields:
+          - {label: "Logo de la Marca (Imagen)", name: "logo_marca", widget: "image"}
+          - {label: "Nombre / Texto Alternativo del Logo", name: "titulo_tienda", widget: "string", default: "@veinti5co"}
+          - {label: "Texto Fundadores (Pantalla de Carga)", name: "texto_fundadores", widget: "string", default: "Fundadores: Tu Nombre & Nombre 2"}
+          - {label: "Número de WhatsApp (ej: 57300...)", name: "whatsapp", widget: "string"}
+          - {label: "Imagen del Banner Principal", name: "banner_principal", widget: "image"}
+          - {label: "Texto del Banner", name: "texto_banner", widget: "string"}
+          - {label: "ID o Enlace Video YouTube", name: "youtube_video", widget: "string", required: false}
+
+  - name: "productos"
+    label: "🛍️ Catálogo de Cuadros"
+    folder: "content/productos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nombre del Producto", name: "title", widget: "string"}
+      - {label: "Categoría", name: "categoria", widget: "select", options: ["Álbumes & Música", "Autos & Motor", "Películas & Cine", "Personalizados"]}
+      - {label: "Estado", name: "estado", widget: "select", options: ["Activo", "Agotado", "Desactivado"], default: "Activo"}
+      - {label: "Precio de Oferta / Descuento (Opcional)", name: "oferta", widget: "string", required: false}
+      - {label: "Foto Principal", name: "image", widget: "image"}
+      - label: "Galería Múltiple de Fotos"
+        name: "galeria"
+        widget: "list"
+        field: {label: "Foto Adicional", name: "foto", widget: "image"}
+      - label: "Variantes de Medida y Marcos (Precios independientes)"
+        name: "variantes"
+        widget: "list"
+        fields:
+          - {label: "Medida (ej: 21x30 cm)", name: "medida", widget: "string"}
+          - {label: "Tipo de Marco", name: "marco", widget: "select", options: ["Marco Delgado", "Marco Grueso"]}
+          - {label: "Precio Exacto (COP)", name: "precio", widget: "string"}
+      - {label: "Descripción", name: "body", widget: "markdown"}
+
+  - name: "playlists"
+    label: "🎵 Reproductor y Música"
+    folder: "content/playlists"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título de la Canción", name: "title", widget: "string"}
+      - {label: "Artista", name: "artista", widget: "string"}
+      - {label: "Archivo de Audio (MP3 / URL)", name: "audio_url", widget: "string"}
+      - {label: "Portada", name: "image", widget: "image"}
