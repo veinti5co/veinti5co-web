@@ -1,12 +1,12 @@
 {
   "branding": {
     "storeName": "@veinti5co",
-    "logoUrl": "",
-    "faviconUrl": "",
-    "bgColor": "#0b0b0b",
+    "logoUrl": "data:image/webp;base64,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",
+    "faviconUrl": "data:image/webp;base64,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",
+    "bgColor": "#ffffff",
     "cardBgColor": "#161616",
-    "textColor": "#f3f3f3",
-    "accentColor": "#d4af37",
+    "textColor": "#000000",
+    "accentColor": "#17e8e5",
     "fontFamily": "'Plus Jakarta Sans', sans-serif"
   },
   "banner": {
@@ -24,11 +24,28 @@
       "category": "Álbumes & Música",
       "title": "Cuadro Álbum Musical Edición Vinilo",
       "badge": "-20% OFF",
-      "images": ["https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600"],
+      "images": [
+        "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600"
+      ],
       "sizes": [
-        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
-        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false },
-        { "label": "50x70 cm", "thinPrice": 115000, "thickPrice": 140000, "soldOut": false }
+        {
+          "label": "30x40 cm",
+          "thinPrice": 65000,
+          "thickPrice": 80000,
+          "soldOut": false
+        },
+        {
+          "label": "40x50 cm",
+          "thinPrice": 85000,
+          "thickPrice": 105000,
+          "soldOut": false
+        },
+        {
+          "label": "50x70 cm",
+          "thinPrice": 115000,
+          "thickPrice": 140000,
+          "soldOut": false
+        }
       ]
     },
     {
@@ -36,10 +53,22 @@
       "category": "Autos & Motor",
       "title": "Porsche 911 GT3 RS Poster",
       "badge": "TOP VENTAS",
-      "images": ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
+      "images": [
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"
+      ],
       "sizes": [
-        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
-        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false }
+        {
+          "label": "30x40 cm",
+          "thinPrice": 65000,
+          "thickPrice": 80000,
+          "soldOut": false
+        },
+        {
+          "label": "40x50 cm",
+          "thinPrice": 85000,
+          "thickPrice": 105000,
+          "soldOut": false
+        }
       ]
     }
   ],
@@ -62,15 +91,32 @@
     "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   },
   "trustStats": [
-    { "value": "+7 Años", "label": "De experiencia creando arte" },
-    { "value": "+1.500", "label": "Clientes felices en Colombia" },
-    { "value": "100%", "label": "Personalizado a tu medida" }
+    {
+      "value": "+7 Años",
+      "label": "De experiencia creando arte"
+    },
+    {
+      "value": "+1.500",
+      "label": "Clientes felices en Colombia"
+    },
+    {
+      "value": "100%",
+      "label": "Personalizado a tu medida"
+    }
   ],
   "reviews": [
-    { "author": "Camilo R.", "stars": 5, "text": "Excelente calidad en el marco grueso, llegó súper rápido a Bogotá." }
+    {
+      "author": "Camilo R.",
+      "stars": 5,
+      "text": "Excelente calidad en el marco grueso, llegó súper rápido a Bogotá."
+    }
   ],
   "playlist": [
-    { "title": "Nocturnal Goth Synth", "artist": "@veinti5co Session", "audioData": "" }
+    {
+      "title": "Nocturnal Goth Synth",
+      "artist": "@veinti5co Session",
+      "audioData": ""
+    }
   ],
   "contact": {
     "whatsappNumber": "573000000000",
