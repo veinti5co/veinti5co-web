@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">@veinti5co | Cuadros & Arte Exclusivo</title>
+    <link id="dynamic-favicon" rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { min-height: 100vh; display: flex; flex-direction: column; transition: background 0.3s, color 0.3s; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+    </style>
+</head>
+<body id="app-body" class="bg-[#0b0b0b] text-[#f3f3f3]" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+
+    <!-- HEADER -->
+    <header class="px-6 py-4 flex items-center justify-between border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-black/40">
+        <div class="flex items-center gap-3">
+            <div id="header-logo-container">
+                <div class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-sm">25</div>
+            </div>
+            <h1 id="header-title" class="text-lg font-extrabold tracking-wider text-white">@VEINTI5CO</h1>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-xs font-semibold opacity-80">
+            <a href="#catalogo" class="hover:opacity-100">Catálogo</a>
+            <a href="#promociones" class="hover:opacity-100">Promociones</a>
+            <a href="#fundadores" class="hover:opacity-100">Fundadores</a>
+        </div>
+    </header>
+
+    <!-- BANNER -->
+    <div id="banner-section"></div>
+
+    <!-- MAIN -->
+    <main class="max-w-7xl mx-auto px-6 py-10 w-full flex-1 space-y-16">
+        <section id="catalogo" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-black tracking-tight">Catálogo de Cuadros</h2>
+                    <p class="text-xs opacity-70 mt-1">Haz clic en cualquier cuadro para ver medidas, marcos y ordenar.</p>
+                </div>
+                <div id="category-filters" class="flex flex-wrap gap-2">
+                    <button onclick="filterCategory('all')" class="px-4 py-1.5 rounded-full text-xs font-bold bg-white text-black transition">Todos</button>
+                </div>
+            </div>
+
+            <!-- Grilla limpia -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </section>
+
+        <section id="promociones">
+            <div id="promos-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </section>
+
+        <section id="fundadores">
+            <div id="founders-container"></div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center" id="stats-container"></section>
+    </main>
+
+    <!-- MODAL / TARJETA FLOTANTE DE COMPRA -->
+    <div id="buy-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div id="modal-box" class="rounded-3xl border border-white/15 max-w-md w-full p-6 relative shadow-2xl space-y-5">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold text-sm">✕</button>
+            
+            <div class="flex gap-4 items-center">
+                <img id="modal-img" src="" class="w-20 h-20 rounded-xl object-cover border border-white/10">
+                <div>
+                    <span id="modal-category" class="text-[10px] font-black uppercase text-amber-400 tracking-wider"></span>
+                    <h3 id="modal-title" class="font-extrabold text-base leading-snug mt-0.5"></h3>
+                </div>
+            </div>
+
+            <!-- Medidas -->
+            <div class="space-y-2">
+                <span class="text-xs font-semibold opacity-70 block">Selecciona Medida:</span>
+                <div id="modal-sizes" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Marcos -->
+            <div class="space-y-2">
+                <span class="text-xs font-semibold opacity-70 block">Tipo de Marco:</span>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="setModalFrame('thin')" id="btn-frame-thin" class="py-2 rounded-xl text-xs font-bold border transition">Marco Delgado</button>
+                    <button onclick="setModalFrame('thick')" id="btn-frame-thick" class="py-2 rounded-xl text-xs font-bold border transition">Marco Grueso</button>
+                </div>
+            </div>
+
+            <!-- Precio y Estado -->
+            <div id="modal-price-container" class="pt-2"></div>
+
+            <!-- Botón WhatsApp -->
+            <div id="modal-btn-container"></div>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR + FOOTER -->
+    <footer class="mt-auto border-t border-white/10 px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/60 backdrop-blur-md">
+        <div class="flex items-center gap-3 bg-white/10 border border-white/15 px-4 py-2.5 rounded-full shadow-lg">
+            <button onclick="toggleAudioPlay()" id="play-btn" class="w-8 h-8 rounded-full bg-white text-black font-bold flex items-center justify-center text-xs hover:scale-105 transition">▶</button>
+            <div class="text-left pr-2">
+                <div id="track-title" class="text-xs font-bold leading-tight text-white">Cargando música...</div>
+                <div id="track-artist" class="text-[10px] text-white/60">@veinti5co Goth Session</div>
+            </div>
+            <button onclick="nextAudioTrack()" class="text-xs text-white/70 hover:text-white px-1 font-bold">⏭</button>
+        </div>
+        <div class="text-center md:text-right space-y-1">
+            <div id="footer-contact" class="text-xs font-bold text-white/90"></div>
+            <div class="text-[11px] opacity-60">&copy; 2026 @veinti5co. Todos los derechos reservados. Pagos seguros vía Nequi.</div>
+        </div>
+    </footer>
+
+    <audio id="public-audio-player" onended="nextAudioTrack()"></audio>
+
+    <script>
+        let storeData = null;
+        let activeCategory = 'all';
+        let currentModalProduct = null;
+        let modalSelectedSizeIdx = 0;
+        let modalSelectedFrame = 'thin';
+        let currentTrackIdx = 0;
+        let isAudioPlaying = false;
+
+        async function loadStoreData() {
+            try {
+                const res = await fetch(`data.json?t=${Date.now()}`);
+                if (res.ok) {
+                    storeData = await res.json();
+                    renderStore();
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        function formatCOP(val) { return "$" + Number(val || 0).toLocaleString('es-CO') + " COP"; }
+
+        function renderStore() {
+            if (!storeData) return;
+            const b = storeData.branding;
+
+            document.getElementById('app-body').style.backgroundColor = b.bgColor;
+            document.getElementById('app-body').style.color = b.textColor;
+            document.getElementById('app-body').style.fontFamily = b.fontFamily;
+            document.getElementById('page-title').innerText = `${b.storeName} | Cuadros & Arte Exclusivo`;
+            document.getElementById('header-title').innerText = b.storeName;
+
+            if (b.logoUrl) document.getElementById('header-logo-container').innerHTML = `<img src="${b.logoUrl}" class="h-10 w-10 rounded-full object-cover border border-white/20">`;
+            if (b.faviconUrl) document.getElementById('dynamic-favicon').href = b.faviconUrl;
+
+            // Banner
+            const bannerEl = document.getElementById('banner-section');
+            if (storeData.banner && storeData.banner.enabled) {
+                bannerEl.innerHTML = `
+                    <div style="height:${storeData.banner.height}px; background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('${storeData.banner.imageUrl || 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1200'}'); background-size:cover; background-position:center;" class="flex flex-col items-center justify-center text-center text-white px-6">
+                        <h1 class="text-3xl md:text-5xl font-black max-w-2xl mb-3 tracking-tight">${storeData.banner.title}</h1>
+                        <p class="text-sm md:text-base text-white/85 max-w-xl mb-6">${storeData.banner.subtitle}</p>
+                        ${storeData.banner.ctaText ? `<a href="${storeData.banner.ctaLink || '#catalogo'}" style="background:${b.accentColor}" class="px-6 py-3 rounded-full text-xs font-extrabold shadow-xl hover:scale-105 transition">${storeData.banner.ctaText}</a>` : ''}
+                    </div>
+                `;
+            } else { bannerEl.innerHTML = ''; }
+
+            // Categorías
+            const categories = ['all', ...new Set(storeData.products.map(p => p.category))];
+            document.getElementById('category-filters').innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" class="px-4 py-1.5 rounded-full text-xs font-bold transition ${activeCategory === cat ? 'bg-white text-black shadow-md' : 'bg-white/10 opacity-75 hover:opacity-100'}">
+                    ${cat === 'all' ? 'Todos' : cat}
+                </button>
+            `).join('');
+
+            // Grilla limpia (Tarjetas limpias que al hacer clic abren la modal)
+            const gridEl = document.getElementById('product-grid');
+            const filteredProducts = activeCategory === 'all' ? storeData.products : storeData.products.filter(p => p.category === activeCategory);
+
+            gridEl.innerHTML = filteredProducts.map((p) => {
+                const basePrice = p.sizes[0] ? p.sizes[0].thinPrice : 0;
+                return `
+                <div onclick="openModal('${p.id}')" style="background:${b.cardBgColor}" class="rounded-2xl border border-white/10 overflow-hidden shadow-lg flex flex-col justify-between cursor-pointer transition-transform duration-300 hover:-translate-y-1.5 group">
+                    <div>
+                        <div class="relative h-64 bg-black/20 overflow-hidden">
+                            <img src="${p.images[0] || ''}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            ${p.badge ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow">${p.badge}</span>` : ''}
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-400 opacity-90">${p.category}</span>
+                            <h3 class="font-extrabold text-lg leading-tight">${p.title}</h3>
+                            <div class="text-sm opacity-70">Desde <span class="font-black text-amber-300 text-base">${formatCOP(basePrice)}</span></div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <span style="background:${b.accentColor}" class="block text-center w-full py-2.5 rounded-xl text-black font-extrabold text-xs shadow">
+                            Ver Opciones y Comprar
+                        </span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Promos
+            const promosEl = document.getElementById('promos-container');
+            if (storeData.promotions && storeData.promotions.length > 0) {
+                promosEl.innerHTML = storeData.promotions.map(pr => {
+                    const promoMsg = encodeURIComponent(`Hola @veinti5co! Quiero aprovechar la promoción "${pr.title}" (${pr.availableSizes}) por ${formatCOP(pr.promoPrice)}. Pago por Nequi.`);
+                    return `
+                    <div style="background:${b.cardBgColor}" class="rounded-2xl border border-white/10 overflow-hidden flex flex-col sm:flex-row shadow-xl">
+                        <img src="${pr.image}" class="w-full sm:w-48 h-48 sm:h-auto object-cover">
+                        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                            <div>
+                                <span class="bg-amber-500 text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">${pr.badge}</span>
+                                <h3 class="font-black text-lg mt-2">${pr.title}</h3>
+                                <p class="text-xs opacity-80 mt-1 leading-relaxed">${pr.description}</p>
+                                <p class="text-[11px] font-semibold mt-2 text-amber-300">Medidas: ${pr.availableSizes}</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-baseline gap-3">
+                                    <span class="text-xl font-black text-emerald-400">${formatCOP(pr.promoPrice)}</span>
+                                    <span class="text-xs line-through opacity-50">${formatCOP(pr.regularPrice)}</span>
+                                </div>
+                                <a href="https://wa.me/${storeData.contact.whatsappNumber}?text=${promoMsg}" target="_blank" style="background:${b.accentColor}" class="block text-center py-2.5 rounded-xl text-black font-extrabold text-xs shadow">
+                                    Pedir Promo por WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+            } else { promosEl.innerHTML = ''; }
+
+            // Fundadores YouTube
+            const foundersEl = document.getElementById('founders-container');
+            if (storeData.foundersVideo && storeData.foundersVideo.enabled && storeData.foundersVideo.youtubeUrl) {
+                const embedUrl = getYoutubeEmbed(storeData.foundersVideo.youtubeUrl);
+                if (embedUrl) {
+                    foundersEl.innerHTML = `
+                        <div style="background:${b.cardBgColor}" class="rounded-3xl border border-white/10 p-8 md:p-12 text-center space-y-6 shadow-2xl">
+                            <h2 class="text-2xl md:text-3xl font-black tracking-tight">${storeData.foundersVideo.title}</h2>
+                            <p class="text-xs md:text-sm opacity-80 max-w-2xl mx-auto leading-relaxed">${storeData.foundersVideo.subtitle}</p>
+                            <div class="max-w-3xl mx-auto aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                                <iframe src="${embedUrl}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else { foundersEl.innerHTML = ''; }
+
+            // Trust Stats
+            document.getElementById('stats-container').innerHTML = (storeData.trustStats || []).map(st => `
+                <div style="background:${b.cardBgColor}" class="p-6 rounded-2xl border border-white/10 shadow-lg">
+                    <div class="text-3xl font-black text-amber-300">${st.value}</div>
+                    <div class="text-xs opacity-75 mt-1 font-medium">${st.label}</div>
+                </div>
+            `).join('');
+
+            // Footer Contacto
+            document.getElementById('footer-contact').innerHTML = `
+                WhatsApp: <a href="https://wa.me/${storeData.contact.whatsappNumber}" target="_blank" class="underline hover:text-amber-300">${storeData.contact.whatsappDisplay}</a> | 
+                Instagram: <a href="${storeData.contact.instagramUrl}" target="_blank" class="underline hover:text-amber-300">${storeData.contact.instagramHandle}</a>
+            `;
+
+            updateAudioPlayerUI();
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            renderStore();
+        }
+
+        // CONTROL DE LA TARJETA FLOTANTE (MODAL)
+        function openModal(prodId) {
+            currentModalProduct = storeData.products.find(p => p.id === prodId);
+            if (!currentModalProduct) return;
+            modalSelectedSizeIdx = 0;
+            modalSelectedFrame = 'thin';
+
+            document.getElementById('modal-img').src = currentModalProduct.images[0] || '';
+            document.getElementById('modal-category').innerText = currentModalProduct.category;
+            document.getElementById('modal-title').innerText = currentModalProduct.title;
+            document.getElementById('buy-modal').classList.remove('hidden');
+            document.getElementById('buy-modal').classList.add('flex');
+            renderModalContent();
+        }
+
+        function closeModal() {
+            document.getElementById('buy-modal').classList.add('hidden');
+            document.getElementById('buy-modal').classList.remove('flex');
+        }
+
+        function setModalSize(idx) {
+            modalSelectedSizeIdx = idx;
+            renderModalContent();
+        }
+
+        function setModalFrame(type) {
+            modalSelectedFrame = type;
+            renderModalContent();
+        }
+
+        function renderModalContent() {
+            if (!currentModalProduct) return;
+            const p = currentModalProduct;
+            const b = storeData.branding;
+
+            document.getElementById('modal-box').style.backgroundColor = b.cardBgColor;
+
+            // Renderizar botones de medidas dentro de la modal
+            const sizesContainer = document.getElementById('modal-sizes');
+            sizesContainer.innerHTML = p.sizes.map((sz, idx) => `
+                <button onclick="setModalSize(${idx})" class="px-3.5 py-2 rounded-xl text-xs font-bold border transition ${idx === modalSelectedSizeIdx ? 'bg-white text-black border-white shadow' : 'border-white/15 opacity-75'} ${sz.soldOut ? 'line-through opacity-40' : ''}">
+                    ${sz.label}
+                </button>
+            `).join('');
+
+            // Botones de marco
+            const btnThin = document.getElementById('btn-frame-thin');
+            const btnThick = document.getElementById('btn-frame-thick');
+            btnThin.className = `py-2 rounded-xl text-xs font-bold border transition ${modalSelectedFrame === 'thin' ? 'bg-white text-black border-white shadow' : 'border-white/15 opacity-75'}`;
+            btnThick.className = `py-2 rounded-xl text-xs font-bold border transition ${modalSelectedFrame === 'thick' ? 'bg-white text-black border-white shadow' : 'border-white/15 opacity-75'}`;
+
+            const currentSize = p.sizes[modalSelectedSizeIdx] || p.sizes[0];
+            const price = modalSelectedFrame === 'thin' ? currentSize.thinPrice : currentSize.thickPrice;
+            const waMsg = encodeURIComponent(`Hola @veinti5co! Me interesa el cuadro "${p.title}" en medida ${currentSize.label} (${modalSelectedFrame === 'thin' ? 'Marco Delgado' : 'Marco Grueso'}) por un valor de ${formatCOP(price)}. Pago por Nequi.`);
+
+            // Precio o Aviso Agotado
+            const priceBox = document.getElementById('modal-price-container');
+            const btnBox = document.getElementById('modal-btn-container');
+
+            if (currentSize.soldOut) {
+                priceBox.innerHTML = `
+                    <div class="bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold p-3 rounded-xl">
+                        ⚠ La medida ${currentSize.label} se encuentra agotada temporalmente en ambos tipos de marco.
+                    </div>
+                `;
+                btnBox.innerHTML = `<button disabled class="w-full py-3 rounded-xl bg-white/10 text-white/40 text-xs font-bold cursor-not-allowed">Agotado en esta medida</button>`;
+            } else {
+                priceBox.innerHTML = `<div class="text-2xl font-black text-amber-300">${formatCOP(price)}</div>`;
+                btnBox.innerHTML = `
+                    <a href="https://wa.me/${storeData.contact.whatsappNumber}?text=${waMsg}" target="_blank" style="background:${b.accentColor}" class="block text-center w-full py-3.5 rounded-xl text-black font-extrabold text-xs shadow-lg hover:opacity-95 transition">
+                        Consultar y Ordenar por WhatsApp
+                    </a>
+                `;
+            }
+        }
+
+        function getYoutubeEmbed(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}` : null;
+        }
+
+        // Reproductor MP3
+        function updateAudioPlayerUI() {
+            if (!storeData || !storeData.playlist || !storeData.playlist.length) return;
+            const track = storeData.playlist[currentTrackIdx];
+            document.getElementById('track-title').innerText = track.title || "Pista Goth";
+            document.getElementById('track-artist').innerText = track.artist || "@veinti5co";
+        }
+
+        function toggleAudioPlay() {
+            if (!storeData || !storeData.playlist || !storeData.playlist.length) return;
+            const audio = document.getElementById('public-audio-player');
+            const track = storeData.playlist[currentTrackIdx];
+            const btn = document.getElementById('play-btn');
+
+            if (!track.audioData) {
+                alert("Esta pista aún no tiene un archivo MP3 cargado.");
+                return;
+            }
+
+            if (isAudioPlaying) {
+                audio.pause();
+                isAudioPlaying = false;
+                btn.innerText = "▶";
+            } else {
+                if (audio.src !== track.audioData) audio.src = track.audioData;
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    btn.innerText = "❚❚";
+                }).catch(e => console.log(e));
+            }
+        }
+
+        function nextAudioTrack() {
+            if (!storeData || !storeData.playlist || !storeData.playlist.length) return;
+            currentTrackIdx = (currentTrackIdx + 1) % storeData.playlist.length;
+            const audio = document.getElementById('public-audio-player');
+            const track = storeData.playlist[currentTrackIdx];
+            isAudioPlaying = false;
+            document.getElementById('play-btn').innerText = "▶";
+            if (track.audioData) {
+                audio.src = track.audioData;
+                toggleAudioPlay();
+            } else { updateAudioPlayerUI(); }
+        }
+
+        loadStoreData();
+    </script>
+</body>
+</html>
