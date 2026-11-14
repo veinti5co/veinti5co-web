@@ -201,7 +201,7 @@
             const promosEl = document.getElementById('promos-container');
             if (storeData.promotions && storeData.promotions.length > 0) {
                 promosEl.innerHTML = storeData.promotions.map(pr => {
-                    const promoMsg = encodeURIComponent(`Hola @veinti5co! Quiero aprovechar la promoción "${pr.title}" (${pr.availableSizes}) por ${formatCOP(pr.promoPrice)}. Pago por Nequi.`);
+                    const promoMsg = encodeURIComponent(`Hola @veinti5co! Quiero aprovechar la promoción "${pr.title}" (${pr.availableSizes}) por ${formatCOP(pr.promoPrice)}. Aún se Encuentra Disponible?.`);
                     return `
                     <div style="background:${b.cardBgColor}" class="rounded-2xl border border-white/10 overflow-hidden flex flex-col sm:flex-row shadow-xl">
                         <img src="${pr.image}" class="w-full sm:w-48 h-48 sm:h-auto object-cover">
