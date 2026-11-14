@@ -44,7 +44,7 @@
           "label": "40x50cm",
           "thinPrice": 165000,
           "thickPrice": 140000,
-          "soldOut": false
+          "soldOut": true
         }
       ]
     },
