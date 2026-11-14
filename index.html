@@ -83,7 +83,7 @@
     <footer class="mt-auto border-t border-white/10 px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-black/60 backdrop-blur-md pb-28 md:pb-8">
         <div class="text-center md:text-left space-y-1">
             <div class="text-xs font-extrabold tracking-wider text-white">@VEINTI5CO</div>
-            <div class="text-[11px] opacity-60">&copy; 2026 @veinti5co. Todos los derechos reservados. Pagos seguros vía Nequi.</div>
+            <div class="text-[11px] opacity-60">&copy; 2026 @veinti5co. Todos los derechos reservados. Pagos seguros para Colombia y el Mundo.</div>
         </div>
         <div id="footer-contact" class="flex flex-wrap items-center justify-center md:justify-end gap-4 text-xs font-bold text-white/90"></div>
     </footer>
@@ -266,7 +266,7 @@
             const spotifyUrl = storeData.contact.spotifyUrl || "https://spotify.com";
             document.getElementById('spotify-promo-box').innerHTML = `
                 <a href="${spotifyUrl}" target="_blank" class="text-[10px] font-bold text-emerald-400 hover:underline flex items-center justify-center gap-1">
-                    <span>🟢 Playlist oficial 25 disponible en Spotify</span>
+                    <span>🟢 Playlist Oficial Disponible en Spotify</span>
                 </a>
             `;
 
@@ -316,7 +316,7 @@
             const container = document.getElementById('modal-dynamic-content');
 
             if (p.isDigital) {
-                const waMsg = encodeURIComponent(`Hola @veinti5co! Me interesa el diseño digital "${p.title}" (${formatCOP(p.priceCOP)} / ${formatUSD(p.priceUSD)}). Pago por Nequi.`);
+                const waMsg = encodeURIComponent(`Hola @veinti5co! Me interesa el diseño digital "${p.title}" (${formatCOP(p.priceCOP)} / ${formatUSD(p.priceUSD)}). Se encuentra Disponible?.`);
                 container.innerHTML = `
                     <p class="text-xs opacity-80 leading-relaxed">${p.description || 'Diseño digital exclusivo listo para descargar.'}</p>
                     <div class="flex justify-between items-center bg-black/30 p-3 rounded-xl border border-white/10">
@@ -358,7 +358,7 @@
 
                 const currentSize = p.sizes && p.sizes[modalSelectedSizeIdx] ? p.sizes[modalSelectedSizeIdx] : (p.sizes[0] || { label: 'Única', thinPrice: 0, thickPrice: 0 });
                 const price = modalSelectedFrame === 'thin' ? currentSize.thinPrice : currentSize.thickPrice;
-                const waMsg = encodeURIComponent(`Hola @veinti5co! Me interesa el cuadro "${p.title}" en medida ${currentSize.label} (${modalSelectedFrame === 'thin' ? 'Marco Delgado' : 'Marco Grueso'}) por un valor de ${formatCOP(price)}. Pago por Nequi.`);
+                const waMsg = encodeURIComponent(`Hola @veinti5co! Me interesa el cuadro "${p.title}" en medida ${currentSize.label} (${modalSelectedFrame === 'thin' ? 'Marco Delgado' : 'Marco Grueso'}) por un valor de ${formatCOP(price)}. Se encuentra Disponible?.`);
 
                 const priceBox = document.getElementById('modal-price-container');
                 const btnBox = document.getElementById('modal-btn-container');
