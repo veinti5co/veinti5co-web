@@ -5,7 +5,7 @@
     "faviconUrl": "",
     "bgColor": "#ffffff",
     "cardBgColor": "#161616",
-    "textColor": "#f3f3f3",
+    "textColor": "#000000",
     "accentColor": "#d4af37",
     "fontFamily": "'Plus Jakarta Sans', sans-serif"
   },
