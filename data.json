@@ -1,0 +1,81 @@
+{
+  "branding": {
+    "storeName": "@veinti5co",
+    "logoUrl": "",
+    "faviconUrl": "",
+    "bgColor": "#0b0b0b",
+    "cardBgColor": "#161616",
+    "textColor": "#f3f3f3",
+    "accentColor": "#d4af37",
+    "fontFamily": "'Plus Jakarta Sans', sans-serif"
+  },
+  "banner": {
+    "enabled": true,
+    "title": "Arte Personalizado & Cuadros de Colección",
+    "subtitle": "Diseños exclusivos de música, autos, cine y momentos únicos.",
+    "imageUrl": "",
+    "height": 280,
+    "ctaText": "Ver Promoción Especial",
+    "ctaLink": "#promociones"
+  },
+  "products": [
+    {
+      "id": "prod-1",
+      "category": "Álbumes & Música",
+      "title": "Cuadro Álbum Musical Edición Vinilo",
+      "badge": "-20% OFF",
+      "images": ["https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600"],
+      "sizes": [
+        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
+        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false },
+        { "label": "50x70 cm", "thinPrice": 115000, "thickPrice": 140000, "soldOut": false }
+      ]
+    },
+    {
+      "id": "prod-2",
+      "category": "Autos & Motor",
+      "title": "Porsche 911 GT3 RS Poster",
+      "badge": "TOP VENTAS",
+      "images": ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
+      "sizes": [
+        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
+        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "id": "promo-1",
+      "title": "Promo Especial: Paga 2 y Lleva 3 Cuadros",
+      "description": "Elige tus 3 diseños favoritos en cualquiera de las medidas disponibles y paga solo 2.",
+      "availableSizes": "30x40 cm / 40x50 cm",
+      "regularPrice": 195000,
+      "promoPrice": 130000,
+      "badge": "OFERTA LIMITADA",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600"
+    }
+  ],
+  "foundersVideo": {
+    "enabled": true,
+    "title": "Conoce a los Fundadores de @veinti5co",
+    "subtitle": "Nuestra historia, proceso artesanal y pasión por el diseño.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  },
+  "trustStats": [
+    { "value": "+7 Años", "label": "De experiencia creando arte" },
+    { "value": "+1.500", "label": "Clientes felices en Colombia" },
+    { "value": "100%", "label": "Personalizado a tu medida" }
+  ],
+  "reviews": [
+    { "author": "Camilo R.", "stars": 5, "text": "Excelente calidad en el marco grueso, llegó súper rápido a Bogotá." }
+  ],
+  "playlist": [
+    { "title": "Nocturnal Goth Synth", "artist": "@veinti5co Session", "audioData": "" }
+  ],
+  "contact": {
+    "whatsappNumber": "573000000000",
+    "whatsappDisplay": "+57 300 000 0000",
+    "instagramUrl": "https://instagram.com/veinti5co",
+    "instagramHandle": "@veinti5co"
+  }
+}
