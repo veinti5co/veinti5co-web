@@ -3,7 +3,7 @@
     "storeName": "@veinti5co",
     "logoUrl": "",
     "faviconUrl": "",
-    "bgColor": "#0b0b0b",
+    "bgColor": "#ffffff",
     "cardBgColor": "#161616",
     "textColor": "#f3f3f3",
     "accentColor": "#d4af37",
@@ -24,11 +24,28 @@
       "category": "Álbumes & Música",
       "title": "Cuadro Álbum Musical Edición Vinilo",
       "badge": "-20% OFF",
-      "images": ["https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600"],
+      "images": [
+        "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600"
+      ],
       "sizes": [
-        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
-        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false },
-        { "label": "50x70 cm", "thinPrice": 115000, "thickPrice": 140000, "soldOut": false }
+        {
+          "label": "30x40 cm",
+          "thinPrice": 65000,
+          "thickPrice": 80000,
+          "soldOut": false
+        },
+        {
+          "label": "40x50 cm",
+          "thinPrice": 85000,
+          "thickPrice": 105000,
+          "soldOut": false
+        },
+        {
+          "label": "50x70 cm",
+          "thinPrice": 115000,
+          "thickPrice": 140000,
+          "soldOut": false
+        }
       ]
     },
     {
@@ -36,10 +53,22 @@
       "category": "Autos & Motor",
       "title": "Porsche 911 GT3 RS Poster",
       "badge": "TOP VENTAS",
-      "images": ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"],
+      "images": [
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"
+      ],
       "sizes": [
-        { "label": "30x40 cm", "thinPrice": 65000, "thickPrice": 80000, "soldOut": false },
-        { "label": "40x50 cm", "thinPrice": 85000, "thickPrice": 105000, "soldOut": false }
+        {
+          "label": "30x40 cm",
+          "thinPrice": 65000,
+          "thickPrice": 80000,
+          "soldOut": false
+        },
+        {
+          "label": "40x50 cm",
+          "thinPrice": 85000,
+          "thickPrice": 105000,
+          "soldOut": false
+        }
       ]
     }
   ],
@@ -62,15 +91,32 @@
     "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   },
   "trustStats": [
-    { "value": "+7 Años", "label": "De experiencia creando arte" },
-    { "value": "+1.500", "label": "Clientes felices en Colombia" },
-    { "value": "100%", "label": "Personalizado a tu medida" }
+    {
+      "value": "+7 Años",
+      "label": "De experiencia creando arte"
+    },
+    {
+      "value": "+1.500",
+      "label": "Clientes felices en Colombia"
+    },
+    {
+      "value": "100%",
+      "label": "Personalizado a tu medida"
+    }
   ],
   "reviews": [
-    { "author": "Camilo R.", "stars": 5, "text": "Excelente calidad en el marco grueso, llegó súper rápido a Bogotá." }
+    {
+      "author": "Camilo R.",
+      "stars": 5,
+      "text": "Excelente calidad en el marco grueso, llegó súper rápido a Bogotá."
+    }
   ],
   "playlist": [
-    { "title": "Nocturnal Goth Synth", "artist": "@veinti5co Session", "audioData": "" }
+    {
+      "title": "Nocturnal Goth Synth",
+      "artist": "@veinti5co Session",
+      "audioData": ""
+    }
   ],
   "contact": {
     "whatsappNumber": "573000000000",
