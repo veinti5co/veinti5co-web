@@ -14,8 +14,8 @@
     "title": "Arte Personalizado & Cuadros de Colección",
     "subtitle": "Diseños Personalizados de música,  artistas, autos,  tu mascota y momentos únicos.",
     "imageUrl": "",
-    "height": 280,
-    "ctaText": "Ver Promoción Especial",
+    "height": 400,
+    "ctaText": "Promoción Especial Navidad",
     "ctaLink": "#promociones"
   },
   "products": [
@@ -146,10 +146,20 @@
       "id": "promo-1",
       "title": "Promo Especial: Paga 2 y Lleva 3 Cuadros",
       "description": "Elige tus 3 diseños favoritos en cualquiera de las medidas disponibles y paga solo 2.",
-      "availableSizes": "30x40 cm / 40x50 cm",
+      "availableSizes": "21x30cm",
       "regularPrice": 195000,
       "promoPrice": 130000,
       "badge": "OFERTA LIMITADA",
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600"
+    },
+    {
+      "id": "promo-1794616975914",
+      "title": "Nueva Oferta Especial",
+      "description": "Descripción de la promoción personalizada.",
+      "availableSizes": "30x40cm",
+      "regularPrice": 180000,
+      "promoPrice": 120000,
+      "badge": "PROMO",
       "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=600"
     }
   ],
